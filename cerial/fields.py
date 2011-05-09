@@ -17,7 +17,8 @@ class CerialField(models.TextField):
         """
         raise NotImplemented
 
-    def get_prep_value(self, value):
+    def pre_save(self, obj, create):
+        value = obj.__dict__[self.name]
         if not isinstance(value, basestring):
             value = self.dumps(value)
         return value
