@@ -38,7 +38,7 @@ class CerialDescriptor(object):
 
     def __get__(self, obj, owner):
         value = obj.__dict__[self.field.name]
-        # we don't try to serialize empty strings
+        # we don't try to deserialize empty strings
         if value and isinstance(value, basestring):
             value = self.field.loads(value)
             obj.__dict__[self.field.name] = value
