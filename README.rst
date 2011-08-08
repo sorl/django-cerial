@@ -14,7 +14,7 @@ What makes this different from other implementations available?
 
 Requirements
 ------------
-* 2.6 <= Python < 3
+* 2.5 <= Python < 3
 * Django
 
 
