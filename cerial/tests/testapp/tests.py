@@ -1,7 +1,7 @@
 #coding=utf-8
 import datetime
 from django.utils import unittest
-from testapp.models import JSONEntry, PickleEntry
+from testapp.models import JSONEntry, JSONNullEntry, PickleEntry
 
 
 class A(object):
@@ -47,6 +47,12 @@ class JSONTest(unittest.TestCase):
         entry = self.manager.create(f={'k': u'åäö'})
         entry = self.manager.get(pk=entry.pk)
         self.assertEqual(entry.f, {'k': u'åäö'})
+
+
+class JSONNullTest(unittest.TestCase):
+    def testNULL(self):
+        entry = JSONNullEntry.objects.create(f=None)
+        JSONNullEntry.objects.get(f__isnull=True)
 
 
 class PickleTest(JSONTest):

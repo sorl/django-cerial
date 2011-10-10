@@ -8,3 +8,6 @@ class JSONEntry(models.Model):
 class PickleEntry(models.Model):
     f = PickleField(blank=True)
 
+class JSONNullEntry(models.Model):
+    f = JSONField(null=True)
+

@@ -19,9 +19,9 @@ class CerialField(models.TextField):
 
     def pre_save(self, obj, create):
         value = obj.__dict__[self.name]
-        if not isinstance(value, basestring):
-            value = self.dumps(value)
-        return value
+        if isinstance(value, basestring) or (value is None and self.null):
+            return value
+        return self.dumps(value)
 
     def contribute_to_class(self, cls, name):
         super(CerialField, self).contribute_to_class(cls, name)
